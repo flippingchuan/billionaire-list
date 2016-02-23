@@ -1,5 +1,18 @@
-var gulp = require('gulp');
+var gulp = require('gulp'),
+		sass = require('gulp-sass'),
+		uglify = require('gulp-uglify'),
+		concat  = require('gulp-concat');
+
+gulp.task('sass', function () {
+  return gulp.src('./sass/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./css'));
+});
 
 gulp.task('default', function(){
-	console.log("gulp running");
+	gulp.src('./assets/js/*.js')
+	.pipe(browserify())
+	.pipe(uglify())
+	.pipe(concat('bundle.js'))
+	.pipe(gulp.dest('./dest'));
 });
