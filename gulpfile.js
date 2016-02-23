@@ -4,15 +4,14 @@ var gulp = require('gulp'),
 		concat  = require('gulp-concat');
 
 gulp.task('sass', function () {
-  return gulp.src('./sass/**/*.scss')
+  return gulp.src('./assets/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./dest'));
 });
 
 gulp.task('default', function(){
 	gulp.src('./assets/js/*.js')
-	.pipe(browserify())
 	.pipe(uglify())
-	.pipe(concat('bundle.js'))
+	.pipe(concat('main.js'))
 	.pipe(gulp.dest('./dest'));
 });
