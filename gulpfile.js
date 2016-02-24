@@ -21,7 +21,7 @@ gulp.task('sass', function (){
   return gulp.src(srcPaths.sass)
   	.pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(concat('main.min.js'))
+    .pipe(concat('main.min.css'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(destPath));
 });

@@ -6,8 +6,8 @@
   "author": "Scotch",
   "dependencies": {
     "express": "latest",
-    "request": "latest",
-    "cheerio": "latest"
+    "hbs": "^4.0.0",
+    "request": "latest"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
