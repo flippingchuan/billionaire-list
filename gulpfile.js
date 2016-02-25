@@ -4,6 +4,7 @@ var gulp = require('gulp'),
 		uglify = require('gulp-uglify'),
 		concat  = require('gulp-concat'),
 		sourcemaps = require('gulp-sourcemaps'),
+    livereload = require('gulp-livereload'),
 		clean = require('gulp-clean');
 
 var srcPaths = {
@@ -23,7 +24,8 @@ gulp.task('sass', function (){
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('main.min.css'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(destPath));
+    .pipe(gulp.dest(destPath))
+    .pipe(livereload());
 });
 
 gulp.task('lint', function(){
@@ -43,6 +45,7 @@ gulp.task('scripts', function(){
 
 // Rerun the task when a file changes
 gulp.task('watch', function(){
+  livereload.listen();
   gulp.watch(srcPaths.scripts, ['lint', 'scripts']);
   gulp.watch(srcPaths.sass, ['sass']);
 });
